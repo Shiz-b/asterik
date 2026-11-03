@@ -1,0 +1,1315 @@
+{
+  "dataset": "TrashCan-Material 1.0",
+  "splits": {
+    "train": 4989,
+    "val": 649,
+    "test": 1574
+  },
+  "num_classes": 16,
+  "train_class_counts": {
+    "animal_fish": 586,
+    "trash_plastic": 1304,
+    "rov": 2679,
+    "trash_metal": 748,
+    "trash_wood": 243,
+    "trash_fishing_gear": 118,
+    "animal_starfish": 224,
+    "animal_eel": 264,
+    "trash_etc": 1252,
+    "animal_shells": 205,
+    "animal_etc": 134,
+    "plant": 418,
+    "trash_fabric": 194,
+    "trash_paper": 134,
+    "animal_crab": 138,
+    "trash_rubber": 9
+  },
+  "literature_baselines": {
+    "Faster R-CNN (ResNeXt-101-FPN) [Hong et al. 2020]": {
+      "AP": 29.1,
+      "AP50": 51.2,
+      "AP75": 27.8,
+      "APS": 28.2,
+      "APM": 30.2,
+      "APL": 40.0
+    },
+    "Mask R-CNN (ResNeXt-101-FPN) [Hong et al. 2020]": {
+      "AP": 28.2,
+      "AP50": 54.0,
+      "AP75": 25.6,
+      "APS": 24.1,
+      "APM": 28.7,
+      "APL": 41.8
+    }
+  },
+  "models": {
+    "mobilenet_v3": {
+      "arch": "mobilenet_v3",
+      "display_name": "Faster R-CNN (MobileNetV3-Large-FPN) [W7 Baseline]",
+      "week": 7,
+      "total_params": 19007104,
+      "trainable_params": 19007104,
+      "history": [
+        {
+          "epoch": 1,
+          "train_time_s": 93.6,
+          "lr": 0.00025,
+          "total_loss": 1.0665,
+          "val_AP": 5.21,
+          "val_AP50": 10.52,
+          "val_AP75": 4.62
+        },
+        {
+          "epoch": 2,
+          "train_time_s": 82.6,
+          "lr": 0.00021,
+          "total_loss": 0.9695,
+          "val_AP": 8.83,
+          "val_AP50": 15.83,
+          "val_AP75": 8.55
+        },
+        {
+          "epoch": 3,
+          "train_time_s": 80.9,
+          "lr": 0.00014,
+          "total_loss": 0.9022,
+          "val_AP": 10.55,
+          "val_AP50": 19.6,
+          "val_AP75": 9.6
+        },
+        {
+          "epoch": 4,
+          "train_time_s": 80.2,
+          "lr": 6e-05,
+          "total_loss": 0.807,
+          "val_AP": 11.3,
+          "val_AP50": 20.17,
+          "val_AP75": 10.04
+        },
+        {
+          "epoch": 5,
+          "train_time_s": 80.0,
+          "lr": 1e-05,
+          "total_loss": 0.6941,
+          "val_AP": 10.38,
+          "val_AP50": 19.32,
+          "val_AP75": 8.84
+        }
+      ],
+      "val": {
+        "AP": 11.3,
+        "AP50": 20.17,
+        "AP75": 10.04,
+        "APS": 10.78,
+        "APM": 9.47,
+        "APL": 12.89,
+        "AR100": 17.96,
+        "per_class": {
+          "animal_crab": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "animal_eel": {
+            "AP": 30.64,
+            "AP50": 68.81,
+            "AP75": 12.48,
+            "AR": 43.08
+          },
+          "animal_etc": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "animal_fish": {
+            "AP": 11.88,
+            "AP50": 30.31,
+            "AP75": 6.17,
+            "AR": 18.21
+          },
+          "animal_shells": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "animal_starfish": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "plant": {
+            "AP": 0.42,
+            "AP50": 1.71,
+            "AP75": 0.06,
+            "AR": 6.56
+          },
+          "rov": {
+            "AP": 57.36,
+            "AP50": 81.3,
+            "AP75": 64.8,
+            "AR": 70.73
+          },
+          "trash_etc": {
+            "AP": 0.28,
+            "AP50": 1.14,
+            "AP75": 0.0,
+            "AR": 5.74
+          },
+          "trash_fabric": {
+            "AP": 31.21,
+            "AP50": 56.99,
+            "AP75": 30.67,
+            "AR": 48.4
+          },
+          "trash_fishing_gear": {
+            "AP": 0.01,
+            "AP50": 0.06,
+            "AP75": 0.0,
+            "AR": 0.15
+          },
+          "trash_metal": {
+            "AP": 5.71,
+            "AP50": 13.93,
+            "AP75": 2.58,
+            "AR": 21.77
+          },
+          "trash_paper": {
+            "AP": 18.11,
+            "AP50": 21.12,
+            "AP75": 21.12,
+            "AR": 24.17
+          },
+          "trash_plastic": {
+            "AP": 13.84,
+            "AP50": 27.11,
+            "AP75": 12.79,
+            "AR": 30.62
+          },
+          "trash_rubber": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "trash_wood": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          }
+        },
+        "family": {
+          "animal": {
+            "AP": 7.09,
+            "AP50": 16.52
+          },
+          "plant": {
+            "AP": 0.42,
+            "AP50": 1.71
+          },
+          "rov": {
+            "AP": 57.36,
+            "AP50": 81.3
+          },
+          "trash": {
+            "AP": 8.64,
+            "AP50": 15.05
+          }
+        },
+        "fps": 48.9,
+        "latency_ms": 20.5
+      },
+      "test": {
+        "AP": 8.76,
+        "AP50": 17.74,
+        "AP75": 8.2,
+        "APS": 1.58,
+        "APM": 9.49,
+        "APL": 12.61,
+        "AR100": 22.13,
+        "per_class": {
+          "animal_crab": {
+            "AP": 17.25,
+            "AP50": 54.68,
+            "AP75": 12.21,
+            "AR": 38.92
+          },
+          "animal_eel": {
+            "AP": 15.9,
+            "AP50": 32.9,
+            "AP75": 12.73,
+            "AR": 32.73
+          },
+          "animal_etc": {
+            "AP": 0.04,
+            "AP50": 0.07,
+            "AP75": 0.02,
+            "AR": 2.2
+          },
+          "animal_fish": {
+            "AP": 6.76,
+            "AP50": 15.6,
+            "AP75": 4.5,
+            "AR": 27.12
+          },
+          "animal_shells": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "animal_starfish": {
+            "AP": 0.38,
+            "AP50": 0.64,
+            "AP75": 0.64,
+            "AR": 5.0
+          },
+          "plant": {
+            "AP": 0.35,
+            "AP50": 1.19,
+            "AP75": 0.06,
+            "AR": 8.77
+          },
+          "rov": {
+            "AP": 38.54,
+            "AP50": 58.04,
+            "AP75": 41.51,
+            "AR": 60.7
+          },
+          "trash_etc": {
+            "AP": 7.68,
+            "AP50": 18.07,
+            "AP75": 6.01,
+            "AR": 32.37
+          },
+          "trash_fabric": {
+            "AP": 1.9,
+            "AP50": 3.74,
+            "AP75": 1.23,
+            "AR": 8.74
+          },
+          "trash_fishing_gear": {
+            "AP": 11.61,
+            "AP50": 17.4,
+            "AP75": 17.4,
+            "AR": 29.17
+          },
+          "trash_metal": {
+            "AP": 7.59,
+            "AP50": 17.06,
+            "AP75": 4.97,
+            "AR": 26.44
+          },
+          "trash_paper": {
+            "AP": 1.19,
+            "AP50": 2.06,
+            "AP75": 1.82,
+            "AR": 7.83
+          },
+          "trash_plastic": {
+            "AP": 19.51,
+            "AP50": 37.0,
+            "AP75": 18.47,
+            "AR": 44.27
+          },
+          "trash_rubber": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "trash_wood": {
+            "AP": 11.5,
+            "AP50": 25.42,
+            "AP75": 9.68,
+            "AR": 29.9
+          }
+        },
+        "family": {
+          "animal": {
+            "AP": 6.72,
+            "AP50": 17.31
+          },
+          "plant": {
+            "AP": 0.35,
+            "AP50": 1.19
+          },
+          "rov": {
+            "AP": 38.54,
+            "AP50": 58.04
+          },
+          "trash": {
+            "AP": 7.62,
+            "AP50": 15.09
+          }
+        },
+        "fps": 126.7,
+        "latency_ms": 7.9
+      }
+    },
+    "resnet50": {
+      "arch": "resnet50",
+      "display_name": "Faster R-CNN (ResNet-50-FPN) [W7 Baseline]",
+      "week": 7,
+      "total_params": 41376036,
+      "trainable_params": 41153636,
+      "history": [
+        {
+          "epoch": 1,
+          "train_time_s": 64.5,
+          "lr": 0.008,
+          "total_loss": 0.3813,
+          "val_AP": 6.83,
+          "val_AP50": 13.06,
+          "val_AP75": 6.2
+        },
+        {
+          "epoch": 2,
+          "train_time_s": 63.8,
+          "lr": 0.0065,
+          "total_loss": 0.2185,
+          "val_AP": 9.61,
+          "val_AP50": 18.32,
+          "val_AP75": 9.23
+        },
+        {
+          "epoch": 3,
+          "train_time_s": 64.2,
+          "lr": 0.0045,
+          "total_loss": 0.1583,
+          "val_AP": 12.38,
+          "val_AP50": 21.37,
+          "val_AP75": 12.74
+        },
+        {
+          "epoch": 4,
+          "train_time_s": 68.1,
+          "lr": 0.004,
+          "total_loss": 0.1207,
+          "val_AP": 14.68,
+          "val_AP50": 22.71,
+          "val_AP75": 15.75
+        },
+        {
+          "epoch": 5,
+          "train_time_s": 65.3,
+          "lr": 0.002,
+          "total_loss": 0.109,
+          "val_AP": 14.31,
+          "val_AP50": 22.62,
+          "val_AP75": 15.72
+        }
+      ],
+      "val": {
+        "AP": 14.68,
+        "AP50": 22.7,
+        "AP75": 15.84,
+        "APS": 16.02,
+        "APM": 13.69,
+        "APL": 15.83,
+        "AR100": 23.16,
+        "per_class": {
+          "animal_crab": {
+            "AP": 0.18,
+            "AP50": 0.35,
+            "AP75": 0.0,
+            "AR": 0.75
+          },
+          "animal_eel": {
+            "AP": 49.19,
+            "AP50": 86.5,
+            "AP75": 49.56,
+            "AR": 62.31
+          },
+          "animal_etc": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "animal_fish": {
+            "AP": 17.36,
+            "AP50": 35.6,
+            "AP75": 12.9,
+            "AR": 26.61
+          },
+          "animal_shells": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "animal_starfish": {
+            "AP": 0.02,
+            "AP50": 0.06,
+            "AP75": 0.02,
+            "AR": 0.49
+          },
+          "plant": {
+            "AP": 0.09,
+            "AP50": 0.31,
+            "AP75": 0.0,
+            "AR": 1.88
+          },
+          "rov": {
+            "AP": 55.96,
+            "AP50": 81.78,
+            "AP75": 62.04,
+            "AR": 71.49
+          },
+          "trash_etc": {
+            "AP": 3.03,
+            "AP50": 6.18,
+            "AP75": 2.52,
+            "AR": 20.54
+          },
+          "trash_fabric": {
+            "AP": 33.24,
+            "AP50": 45.53,
+            "AP75": 39.93,
+            "AR": 42.4
+          },
+          "trash_fishing_gear": {
+            "AP": 0.3,
+            "AP50": 1.27,
+            "AP75": 0.07,
+            "AR": 1.97
+          },
+          "trash_metal": {
+            "AP": 18.96,
+            "AP50": 28.61,
+            "AP75": 21.92,
+            "AR": 32.98
+          },
+          "trash_paper": {
+            "AP": 29.53,
+            "AP50": 34.29,
+            "AP75": 34.29,
+            "AR": 55.28
+          },
+          "trash_plastic": {
+            "AP": 12.38,
+            "AP50": 20.02,
+            "AP75": 14.34,
+            "AR": 30.78
+          },
+          "trash_rubber": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "trash_wood": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          }
+        },
+        "family": {
+          "animal": {
+            "AP": 11.12,
+            "AP50": 20.42
+          },
+          "plant": {
+            "AP": 0.09,
+            "AP50": 0.31
+          },
+          "rov": {
+            "AP": 55.96,
+            "AP50": 81.78
+          },
+          "trash": {
+            "AP": 12.18,
+            "AP50": 16.99
+          }
+        },
+        "fps": 39.5,
+        "latency_ms": 25.3
+      },
+      "test": {
+        "AP": 10.74,
+        "AP50": 18.94,
+        "AP75": 10.51,
+        "APS": 4.0,
+        "APM": 10.45,
+        "APL": 15.23,
+        "AR100": 31.81,
+        "per_class": {
+          "animal_crab": {
+            "AP": 24.33,
+            "AP50": 48.64,
+            "AP75": 22.29,
+            "AR": 44.05
+          },
+          "animal_eel": {
+            "AP": 31.04,
+            "AP50": 55.19,
+            "AP75": 28.29,
+            "AR": 61.82
+          },
+          "animal_etc": {
+            "AP": 3.64,
+            "AP50": 5.65,
+            "AP75": 4.21,
+            "AR": 9.6
+          },
+          "animal_fish": {
+            "AP": 10.46,
+            "AP50": 18.79,
+            "AP75": 13.47,
+            "AR": 32.12
+          },
+          "animal_shells": {
+            "AP": 12.69,
+            "AP50": 23.07,
+            "AP75": 3.54,
+            "AR": 53.33
+          },
+          "animal_starfish": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "plant": {
+            "AP": 1.36,
+            "AP50": 3.18,
+            "AP75": 0.61,
+            "AR": 21.58
+          },
+          "rov": {
+            "AP": 35.15,
+            "AP50": 56.64,
+            "AP75": 39.28,
+            "AR": 62.92
+          },
+          "trash_etc": {
+            "AP": 9.38,
+            "AP50": 20.14,
+            "AP75": 6.97,
+            "AR": 38.24
+          },
+          "trash_fabric": {
+            "AP": 2.21,
+            "AP50": 3.61,
+            "AP75": 2.65,
+            "AR": 19.37
+          },
+          "trash_fishing_gear": {
+            "AP": 0.45,
+            "AP50": 0.84,
+            "AP75": 0.29,
+            "AR": 14.17
+          },
+          "trash_metal": {
+            "AP": 8.45,
+            "AP50": 14.35,
+            "AP75": 9.11,
+            "AR": 26.78
+          },
+          "trash_paper": {
+            "AP": 3.04,
+            "AP50": 4.32,
+            "AP75": 4.32,
+            "AR": 45.22
+          },
+          "trash_plastic": {
+            "AP": 21.66,
+            "AP50": 33.29,
+            "AP75": 24.55,
+            "AR": 51.52
+          },
+          "trash_rubber": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "trash_wood": {
+            "AP": 8.0,
+            "AP50": 15.36,
+            "AP75": 8.52,
+            "AR": 28.25
+          }
+        },
+        "family": {
+          "animal": {
+            "AP": 13.69,
+            "AP50": 25.22
+          },
+          "plant": {
+            "AP": 1.36,
+            "AP50": 3.18
+          },
+          "rov": {
+            "AP": 35.15,
+            "AP50": 56.64
+          },
+          "trash": {
+            "AP": 6.65,
+            "AP50": 11.49
+          }
+        },
+        "fps": 51.7,
+        "latency_ms": 19.4
+      }
+    },
+    "retinanet_r50_v2": {
+      "arch": "retinanet_r50_v2",
+      "display_name": "RetinaNet (ResNet-50-FPN v2, Focal Loss) [W8 Alternative]",
+      "week": 8,
+      "total_params": 36662781,
+      "trainable_params": 35217853,
+      "history": [
+        {
+          "epoch": 1,
+          "train_time_s": 98.9,
+          "lr": 0.006,
+          "total_loss": 0.8768,
+          "val_AP": 7.06,
+          "val_AP50": 10.49,
+          "val_AP75": 7.4
+        },
+        {
+          "epoch": 2,
+          "train_time_s": 94.4,
+          "lr": 0.0032,
+          "total_loss": 0.5663,
+          "val_AP": 9.59,
+          "val_AP50": 14.4,
+          "val_AP75": 9.32
+        },
+        {
+          "epoch": 3,
+          "train_time_s": 92.4,
+          "lr": 0.0005,
+          "total_loss": 0.4485,
+          "val_AP": 10.63,
+          "val_AP50": 15.39,
+          "val_AP75": 11.63
+        }
+      ],
+      "val": {
+        "AP": 10.63,
+        "AP50": 15.39,
+        "AP75": 11.63,
+        "APS": 14.57,
+        "APM": 9.05,
+        "APL": 13.65,
+        "AR100": 34.54,
+        "per_class": {
+          "animal_crab": {
+            "AP": 0.9,
+            "AP50": 2.06,
+            "AP75": 0.29,
+            "AR": 8.58
+          },
+          "animal_eel": {
+            "AP": 36.46,
+            "AP50": 53.06,
+            "AP75": 44.26,
+            "AR": 62.31
+          },
+          "animal_etc": {
+            "AP": 0.1,
+            "AP50": 0.3,
+            "AP75": 0.01,
+            "AR": 13.92
+          },
+          "animal_fish": {
+            "AP": 9.02,
+            "AP50": 16.12,
+            "AP75": 8.91,
+            "AR": 46.25
+          },
+          "animal_shells": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.53
+          },
+          "animal_starfish": {
+            "AP": 0.16,
+            "AP50": 0.32,
+            "AP75": 0.13,
+            "AR": 4.32
+          },
+          "plant": {
+            "AP": 0.72,
+            "AP50": 1.36,
+            "AP75": 0.65,
+            "AR": 23.75
+          },
+          "rov": {
+            "AP": 63.28,
+            "AP50": 84.22,
+            "AP75": 70.6,
+            "AR": 79.32
+          },
+          "trash_etc": {
+            "AP": 1.53,
+            "AP50": 3.99,
+            "AP75": 0.78,
+            "AR": 34.96
+          },
+          "trash_fabric": {
+            "AP": 1.18,
+            "AP50": 1.75,
+            "AP75": 1.4,
+            "AR": 47.2
+          },
+          "trash_fishing_gear": {
+            "AP": 0.25,
+            "AP50": 0.74,
+            "AP75": 0.04,
+            "AR": 15.61
+          },
+          "trash_metal": {
+            "AP": 15.82,
+            "AP50": 29.47,
+            "AP75": 13.55,
+            "AR": 39.7
+          },
+          "trash_paper": {
+            "AP": 25.64,
+            "AP50": 29.53,
+            "AP75": 29.53,
+            "AR": 88.89
+          },
+          "trash_plastic": {
+            "AP": 4.3,
+            "AP50": 7.27,
+            "AP75": 4.28,
+            "AR": 46.4
+          },
+          "trash_rubber": {
+            "AP": 0.11,
+            "AP50": 0.72,
+            "AP75": 0.0,
+            "AR": 6.36
+          },
+          "trash_wood": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          }
+        },
+        "family": {
+          "animal": {
+            "AP": 7.77,
+            "AP50": 11.98
+          },
+          "plant": {
+            "AP": 0.72,
+            "AP50": 1.36
+          },
+          "rov": {
+            "AP": 63.28,
+            "AP50": 84.22
+          },
+          "trash": {
+            "AP": 6.1,
+            "AP50": 9.18
+          }
+        },
+        "fps": 57.9,
+        "latency_ms": 17.3
+      },
+      "test": {
+        "AP": 7.25,
+        "AP50": 11.6,
+        "AP75": 8.03,
+        "APS": 6.34,
+        "APM": 8.99,
+        "APL": 10.28,
+        "AR100": 55.84,
+        "per_class": {
+          "animal_crab": {
+            "AP": 6.63,
+            "AP50": 12.1,
+            "AP75": 5.64,
+            "AR": 58.38
+          },
+          "animal_eel": {
+            "AP": 12.2,
+            "AP50": 18.13,
+            "AP75": 15.25,
+            "AR": 70.15
+          },
+          "animal_etc": {
+            "AP": 3.47,
+            "AP50": 6.49,
+            "AP75": 3.6,
+            "AR": 56.2
+          },
+          "animal_fish": {
+            "AP": 7.26,
+            "AP50": 10.26,
+            "AP75": 8.73,
+            "AR": 55.91
+          },
+          "animal_shells": {
+            "AP": 0.35,
+            "AP50": 0.53,
+            "AP75": 0.42,
+            "AR": 66.67
+          },
+          "animal_starfish": {
+            "AP": 1.9,
+            "AP50": 2.53,
+            "AP75": 2.39,
+            "AR": 29.17
+          },
+          "plant": {
+            "AP": 1.74,
+            "AP50": 3.67,
+            "AP75": 0.9,
+            "AR": 44.56
+          },
+          "rov": {
+            "AP": 26.03,
+            "AP50": 42.73,
+            "AP75": 30.09,
+            "AR": 68.68
+          },
+          "trash_etc": {
+            "AP": 12.67,
+            "AP50": 23.36,
+            "AP75": 12.13,
+            "AR": 56.46
+          },
+          "trash_fabric": {
+            "AP": 2.76,
+            "AP50": 4.31,
+            "AP75": 3.26,
+            "AR": 58.0
+          },
+          "trash_fishing_gear": {
+            "AP": 0.04,
+            "AP50": 0.07,
+            "AP75": 0.04,
+            "AR": 26.67
+          },
+          "trash_metal": {
+            "AP": 10.95,
+            "AP50": 18.97,
+            "AP75": 12.2,
+            "AR": 57.33
+          },
+          "trash_paper": {
+            "AP": 3.82,
+            "AP50": 5.3,
+            "AP75": 4.78,
+            "AR": 74.78
+          },
+          "trash_plastic": {
+            "AP": 20.83,
+            "AP50": 28.57,
+            "AP75": 23.77,
+            "AR": 70.76
+          },
+          "trash_rubber": {
+            "AP": 1.21,
+            "AP50": 1.76,
+            "AP75": 1.47,
+            "AR": 46.44
+          },
+          "trash_wood": {
+            "AP": 4.09,
+            "AP50": 6.79,
+            "AP75": 3.83,
+            "AR": 53.3
+          }
+        },
+        "family": {
+          "animal": {
+            "AP": 5.3,
+            "AP50": 8.34
+          },
+          "plant": {
+            "AP": 1.74,
+            "AP50": 3.67
+          },
+          "rov": {
+            "AP": 26.03,
+            "AP50": 42.73
+          },
+          "trash": {
+            "AP": 7.05,
+            "AP50": 11.14
+          }
+        },
+        "fps": 68.1,
+        "latency_ms": 14.7
+      }
+    },
+    "resnet50_v2_improved": {
+      "arch": "resnet50_v2_improved",
+      "display_name": "Faster R-CNN (ResNet-50-FPN + RFS + Class-Weighted + Underwater Aug) [W8 Improved]",
+      "week": 8,
+      "total_params": 41376036,
+      "trainable_params": 41153636,
+      "history": [
+        {
+          "epoch": 1,
+          "train_time_s": 64.5,
+          "lr": 0.008,
+          "total_loss": 0.412,
+          "val_AP": 9.85,
+          "val_AP50": 17.4,
+          "val_AP75": 9.1
+        },
+        {
+          "epoch": 2,
+          "train_time_s": 63.8,
+          "lr": 0.006,
+          "total_loss": 0.284,
+          "val_AP": 13.1,
+          "val_AP50": 22.15,
+          "val_AP75": 13.4
+        },
+        {
+          "epoch": 3,
+          "train_time_s": 64.2,
+          "lr": 0.004,
+          "total_loss": 0.2215,
+          "val_AP": 13.33,
+          "val_AP50": 22.47,
+          "val_AP75": 15.35
+        },
+        {
+          "epoch": 4,
+          "train_time_s": 359.6,
+          "lr": 0.00195,
+          "total_loss": 0.1504,
+          "val_AP": 14.2,
+          "val_AP50": 23.79,
+          "val_AP75": 15.17
+        },
+        {
+          "epoch": 5,
+          "train_time_s": 320.4,
+          "lr": 0.0004,
+          "total_loss": 0.1372,
+          "val_AP": 14.83,
+          "val_AP50": 23.21,
+          "val_AP75": 16.4
+        }
+      ],
+      "val": {
+        "AP": 14.83,
+        "AP50": 23.21,
+        "AP75": 16.4,
+        "APS": 17.0,
+        "APM": 13.77,
+        "APL": 16.2,
+        "AR100": 24.43,
+        "per_class": {
+          "animal_crab": {
+            "AP": 0.52,
+            "AP50": 1.04,
+            "AP75": 0.74,
+            "AR": 1.87
+          },
+          "animal_eel": {
+            "AP": 49.16,
+            "AP50": 84.13,
+            "AP75": 58.35,
+            "AR": 62.31
+          },
+          "animal_etc": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "animal_fish": {
+            "AP": 16.34,
+            "AP50": 35.04,
+            "AP75": 11.66,
+            "AR": 24.38
+          },
+          "animal_shells": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "animal_starfish": {
+            "AP": 0.03,
+            "AP50": 0.08,
+            "AP75": 0.03,
+            "AR": 0.49
+          },
+          "plant": {
+            "AP": 0.15,
+            "AP50": 0.53,
+            "AP75": 0.04,
+            "AR": 5.31
+          },
+          "rov": {
+            "AP": 56.34,
+            "AP50": 82.82,
+            "AP75": 63.07,
+            "AR": 71.85
+          },
+          "trash_etc": {
+            "AP": 3.25,
+            "AP50": 6.23,
+            "AP75": 3.03,
+            "AR": 21.07
+          },
+          "trash_fabric": {
+            "AP": 33.15,
+            "AP50": 47.83,
+            "AP75": 38.86,
+            "AR": 50.4
+          },
+          "trash_fishing_gear": {
+            "AP": 0.86,
+            "AP50": 3.56,
+            "AP75": 0.03,
+            "AR": 6.97
+          },
+          "trash_metal": {
+            "AP": 16.49,
+            "AP50": 26.04,
+            "AP75": 19.18,
+            "AR": 30.81
+          },
+          "trash_paper": {
+            "AP": 31.27,
+            "AP50": 35.8,
+            "AP75": 35.8,
+            "AR": 57.5
+          },
+          "trash_plastic": {
+            "AP": 14.88,
+            "AP50": 25.08,
+            "AP75": 15.2,
+            "AR": 33.49
+          },
+          "trash_rubber": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          },
+          "trash_wood": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AR": 0.0
+          }
+        },
+        "family": {
+          "animal": {
+            "AP": 11.01,
+            "AP50": 20.05
+          },
+          "plant": {
+            "AP": 0.15,
+            "AP50": 0.53
+          },
+          "rov": {
+            "AP": 56.34,
+            "AP50": 82.82
+          },
+          "trash": {
+            "AP": 12.49,
+            "AP50": 18.07
+          }
+        },
+        "fps": 32.0,
+        "latency_ms": 31.2
+      },
+      "test": {
+        "AP": 12.06,
+        "AP50": 21.36,
+        "AP75": 12.65,
+        "APS": 6.17,
+        "APM": 11.01,
+        "APL": 16.18,
+        "AR100": 36.74,
+        "per_class": {
+          "animal_crab": {
+            "AP": 23.59,
+            "AP50": 51.92,
+            "AP75": 22.91,
+            "AR": 46.22
+          },
+          "animal_eel": {
+            "AP": 34.53,
+            "AP50": 59.73,
+            "AP75": 31.13,
+            "AR": 65.76
+          },
+          "animal_etc": {
+            "AP": 2.18,
+            "AP50": 4.37,
+            "AP75": 2.17,
+            "AR": 23.0
+          },
+          "animal_fish": {
+            "AP": 11.84,
+            "AP50": 22.18,
+            "AP75": 12.98,
+            "AR": 37.27
+          },
+          "animal_shells": {
+            "AP": 25.96,
+            "AP50": 41.58,
+            "AP75": 28.22,
+            "AR": 55.0
+          },
+          "animal_starfish": {
+            "AP": 0.01,
+            "AP50": 0.07,
+            "AP75": 0.0,
+            "AR": 0.83
+          },
+          "plant": {
+            "AP": 1.37,
+            "AP50": 3.21,
+            "AP75": 0.42,
+            "AR": 21.93
+          },
+          "rov": {
+            "AP": 35.74,
+            "AP50": 57.42,
+            "AP75": 39.96,
+            "AR": 62.3
+          },
+          "trash_etc": {
+            "AP": 9.48,
+            "AP50": 20.31,
+            "AP75": 6.97,
+            "AR": 40.04
+          },
+          "trash_fabric": {
+            "AP": 2.59,
+            "AP50": 4.31,
+            "AP75": 2.97,
+            "AR": 24.0
+          },
+          "trash_fishing_gear": {
+            "AP": 1.32,
+            "AP50": 2.6,
+            "AP75": 1.51,
+            "AR": 41.67
+          },
+          "trash_metal": {
+            "AP": 9.1,
+            "AP50": 15.89,
+            "AP75": 10.56,
+            "AR": 28.83
+          },
+          "trash_paper": {
+            "AP": 3.57,
+            "AP50": 4.9,
+            "AP75": 4.9,
+            "AR": 51.3
+          },
+          "trash_plastic": {
+            "AP": 23.12,
+            "AP50": 35.05,
+            "AP75": 27.18,
+            "AR": 53.81
+          },
+          "trash_rubber": {
+            "AP": 0.19,
+            "AP50": 0.29,
+            "AP75": 0.29,
+            "AR": 6.0
+          },
+          "trash_wood": {
+            "AP": 8.46,
+            "AP50": 17.94,
+            "AP75": 10.26,
+            "AR": 29.9
+          }
+        },
+        "family": {
+          "animal": {
+            "AP": 16.35,
+            "AP50": 29.97
+          },
+          "plant": {
+            "AP": 1.37,
+            "AP50": 3.21
+          },
+          "rov": {
+            "AP": 35.74,
+            "AP50": 57.42
+          },
+          "trash": {
+            "AP": 7.23,
+            "AP50": 12.66
+          }
+        },
+        "fps": 48.7,
+        "latency_ms": 20.5
+      }
+    }
+  },
+  "error_analysis_resnet50_test": {
+    "fp_counts": {
+      "Within-family class confusion\n(e.g. trash_etc vs trash_plastic)": 472,
+      "Cross-family class confusion\n(e.g. trash vs animal/plant)": 124,
+      "Localization error\n(0.1 <= IoU < 0.5, right class)": 110,
+      "Duplicate box\n(IoU >= 0.5, already matched)": 6,
+      "Background false positive\n(rocks, glare, telemetry, IoU < 0.1)": 262
+    },
+    "fp_pct": {
+      "Within-family class confusion\n(e.g. trash_etc vs trash_plastic)": 48.5,
+      "Cross-family class confusion\n(e.g. trash vs animal/plant)": 12.7,
+      "Localization error\n(0.1 <= IoU < 0.5, right class)": 11.3,
+      "Duplicate box\n(IoU >= 0.5, already matched)": 0.6,
+      "Background false positive\n(rocks, glare, telemetry, IoU < 0.1)": 26.9
+    },
+    "miss_rate_size": {
+      "small (<32\u00b2)": 85.6,
+      "medium (32\u00b2\u201396\u00b2)": 69.0,
+      "large (\u226596\u00b2)": 64.9
+    },
+    "miss_rate_cond": {
+      "Normal lighting": 66.8,
+      "Blue/green colour cast\n(red ratio < 0.80)": 69.2,
+      "Low contrast / murky\n(lum std < 30)": 71.6,
+      "Dark frame\n(mean lum < 60)": 65.3
+    }
+  },
+  "error_analysis_w8_improved_test": {
+    "fp_counts": {
+      "Within-family class confusion\n(e.g. trash_etc vs trash_plastic)": 467,
+      "Cross-family class confusion\n(e.g. trash vs animal/plant)": 131,
+      "Localization error\n(0.1 <= IoU < 0.5, right class)": 100,
+      "Duplicate box\n(IoU >= 0.5, already matched)": 2,
+      "Background false positive\n(rocks, glare, telemetry, IoU < 0.1)": 263
+    },
+    "fp_pct": {
+      "Within-family class confusion\n(e.g. trash_etc vs trash_plastic)": 48.5,
+      "Cross-family class confusion\n(e.g. trash vs animal/plant)": 13.6,
+      "Localization error\n(0.1 <= IoU < 0.5, right class)": 10.4,
+      "Duplicate box\n(IoU >= 0.5, already matched)": 0.2,
+      "Background false positive\n(rocks, glare, telemetry, IoU < 0.1)": 27.3
+    },
+    "miss_rate_size": {
+      "small (<32\u00b2)": 85.6,
+      "medium (32\u00b2\u201396\u00b2)": 69.3,
+      "large (\u226596\u00b2)": 63.1
+    },
+    "miss_rate_cond": {
+      "Normal lighting": 65.5,
+      "Blue/green colour cast\n(red ratio < 0.80)": 69.4,
+      "Low contrast / murky\n(lum std < 30)": 71.7,
+      "Dark frame\n(mean lum < 60)": 63.3
+    }
+  }
+}

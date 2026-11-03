@@ -1,0 +1,99 @@
+{
+  "material": {
+    "source": "mirror",
+    "n_images": 7212,
+    "n_objects": 12336,
+    "n_classes": 16,
+    "images_with_objects": 7212,
+    "splits": {
+      "train": 4989,
+      "test": 1574,
+      "val": 649
+    },
+    "has_masks": false,
+    "image_sizes": {
+      "480x270": 3967,
+      "480x360": 3245
+    },
+    "class_counts": {
+      "rov": 3317,
+      "trash_etc": 2039,
+      "trash_plastic": 1864,
+      "trash_metal": 1126,
+      "animal_fish": 764,
+      "plant": 507,
+      "animal_starfish": 398,
+      "animal_eel": 343,
+      "trash_wood": 340,
+      "trash_fabric": 314,
+      "animal_crab": 309,
+      "animal_shells": 249,
+      "animal_etc": 235,
+      "trash_fishing_gear": 196,
+      "trash_paper": 193,
+      "trash_rubber": 142
+    },
+    "images_per_class": {
+      "rov": 2721,
+      "trash_etc": 1740,
+      "trash_plastic": 1753,
+      "trash_metal": 1093,
+      "animal_fish": 644,
+      "plant": 482,
+      "animal_starfish": 134,
+      "animal_eel": 259,
+      "trash_wood": 324,
+      "trash_fabric": 269,
+      "animal_crab": 186,
+      "animal_shells": 139,
+      "animal_etc": 221,
+      "trash_fishing_gear": 167,
+      "trash_paper": 167,
+      "trash_rubber": 142
+    },
+    "family_counts": {
+      "trash": 6214,
+      "rov": 3317,
+      "animal": 2298,
+      "plant": 507
+    },
+    "imbalance_ratio_max_min": 23.359154929577464,
+    "top_class": "rov",
+    "rarest_class": "trash_rubber",
+    "trash_share_pct": 50.37289234760052,
+    "top3_share_pct": 58.527885862516214,
+    "objects_per_image_mean": 1.7104825291181365,
+    "objects_per_image_median": 1.0,
+    "objects_per_image_max": 19,
+    "pct_images_with_trash": 72.40709927897949,
+    "pct_images_single_object": 57.792567942318364,
+    "pct_images_5plus_objects": 2.7870216306156403,
+    "box_w_median": 85.99607843137255,
+    "box_h_median": 62.99607843137255,
+    "box_area_median": 6046.047125206618,
+    "aspect_median": 1.358906629796012,
+    "rel_area_median_pct": 4.12275131636108,
+    "bucket_pct": {
+      "large (\u226596\u00b2)": 42.939364461738,
+      "medium (32\u00b2\u201396\u00b2)": 39.58333333333333,
+      "small (<32\u00b2)": 17.477302204928662
+    },
+    "trash_bucket_pct": {
+      "medium (32\u00b2\u201396\u00b2)": 50.321853878339226,
+      "large (\u226596\u00b2)": 31.68651432249759,
+      "small (<32\u00b2)": 17.99163179916318
+    },
+    "pct_aspect_gt_2": 31.922827496757456,
+    "red_ratio_median": 0.8245568280374388,
+    "pct_blue_green_cast": 42.42928452579035,
+    "lum_mean_median": 90.231045,
+    "pct_dark": 15.07210205213533,
+    "pct_low_contrast": 22.670549084858568,
+    "n_resolutions": 2,
+    "n_videos": 312,
+    "videos_in_multiple_splits": 0,
+    "frames_per_video_median": 17.0,
+    "frames_per_video_max": 189,
+    "pct_videos_shared_between_splits": 0.0
+  }
+}
