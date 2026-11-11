@@ -159,7 +159,7 @@ Prior to this study, underwater marine debris detection was largely evaluated on
 ### Takeaway for COMP9444 Project 014
 > **Direct Project Relevance:** Fulton et al. (2019) is the direct predecessor to TrashCan from the exact same laboratory. It provides the historical justification for our investigation: confirming that Faster R-CNN provides superior feature discriminability over single-stage models in underwater scenes, while highlighting the need for modern architectures (Faster R-CNN ResNet-50-FPN v2 at 49 FPS) that bridge the historical speed-accuracy gap on embedded hardware.
 
-## 5. Foundational Baseline Context: Baseline Context: Hong et al. (2020) — The TrashCan Benchmark
+## 5. Foundational Baseline Context: Hong et al. (2020) — The TrashCan Benchmark
 
 ### Citation & Metadata
 - **Full Title:** TrashCan: A Semantically-Segmented Dataset Towards Visual Detection of Marine Debris

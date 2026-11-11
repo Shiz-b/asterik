@@ -19,16 +19,17 @@ This blueprint coordinates the finalization of the COMP9444 Summary Report and P
    - Slide 5 completely overhauled into a high-visibility, unified **Literature Review Comparison Table** (Categories: *Title / Study*, *Method*, *Dataset*, *Results*, *Limitations*) integrating:
      - **Valdenegro-Toro (2016)** (Acoustic FLS Sonar + CNN)
      - **Ge et al. (2016)** (Terrestrial Full-Waveform LiDAR + SVM)
+     - **Fulton et al. (2019)** (Trash-ICRA19: Faster R-CNN vs YOLOv2/SSD on Jetson TX2 15W)
      - **Khriss et al. (2024)** (YOLOv9 vs Faster R-CNN/SSD on TrashCAN + DeepTrash)
+     - **Jiang et al. (2024)** (YOLOv8 + CloFormer + C2f-SCConv + WIoU v3 on TrashCan)
+     - **Đuraš et al. (2024)** (SeaClear: Shallow-Water Coastal Debris, Faster R-CNN vs YOLOv6)
      - **Jing et al. (2026)** (YOLOv11 + MixStructureBlock + EMA on TrashCan)
-   - Integrated a formatted **Takeaway Banner** on Slide 5 highlighting the sensing gap (acoustic/LiDAR vs optical ROV) and the methodological gap (random frame splits vs strict video-disjoint splits).
-2. **Report Document Annotated (`Asterisk.docx`)**:
+   - Integrated a formatted **Takeaway Banner** on Slide 5 highlighting the sensing gap (acoustic/LiDAR vs optical ROV), the two-stage vs single-stage edge reality (Fulton 2019 on Jetson TX2), and the methodological gap (random frame splits vs strict video-disjoint splits, plus negative findings on naive image enhancement from Đuraš 2024).
+2. **Report Document Annotated (`Asterisk.docx` & `Asterisk_Annotated_Blueprint.docx`)**:
    - Retained **100% of the existing draft prose** without deleting or altering any team writing.
-   - Inserted distinct, styled callout boxes under every section heading detailing:
-     - Exact marking criteria weight and rubric expectations.
-     - Specific action prompts for Argon and the author team.
-     - Exact verified numerical data dotpoints (AP, AP50, FPS, per-class metrics, error distributions).
-   - Resolved Section VIII (References) placeholders with full IEEE bibliographic citations for [Khriss et al. (2024)](file:///media/sudam/New%20Volume/COMP9444/Project/LITERATURE_REVIEW.md#paper-3-khriss-et-al-2024), [Valdenegro-Toro (2016)](file:///media/sudam/New%20Volume/COMP9444/Project/LITERATURE_REVIEW.md#paper-1-valdenegro-toro-2016), [Ge et al. (2016)](file:///media/sudam/New%20Volume/COMP9444/Project/LITERATURE_REVIEW.md#paper-2-ge-et-al-2016), and [Jing et al. (2026)](file:///media/sudam/New%20Volume/COMP9444/Project/LITERATURE_REVIEW.md#paper-4-jing-et-al-2026).
+   - Inserted distinct, styled callout boxes under every section heading detailing rubric expectations and verified empirical figures.
+   - Synthesized all 8 literature works across 5 structured paragraphs in Section II (Related Work).
+   - Resolved Section VIII (References) with full IEEE bibliographic citations `[1]` through `[15]`, including [Fulton et al. (2019)](file:///media/sudam/New%20Volume/COMP9444/Project/LITERATURE_REVIEW.md#4-foundational-robotic-detection-on-jamstec-fulton-et-al-2019) `[13]`, [Jiang et al. (2024)](file:///media/sudam/New%20Volume/COMP9444/Project/LITERATURE_REVIEW.md#7-hybrid-attention--dynamic-loss-jiang-et-al-2024) `[14]`, and [Đuraš et al. (2024)](file:///media/sudam/New%20Volume/COMP9444/Project/LITERATURE_REVIEW.md#8-shallow-coastal-debris-benchmark-dura-et-al-2024) `[15]`.
 3. **Training & Experimental Audit**:
    - Audited all baseline checkpoints, evaluation JSONs, and test predictions. All primary experimental data is 100% complete and verified.
 
@@ -41,7 +42,7 @@ The Summary Report has a strict length limit of **max 4 pages (excluding referen
 | Section | Marks | Official Rubric Requirement | Alignment Strategy in `Asterisk.docx` |
 | :--- | :---: | :--- | :--- |
 | **I. Introduction** | **0.5** | High-level description of the project; clear purpose and problem statement. | Frame global marine litter crisis (~14M tons seafloor plastic); articulate physical underwater vision degradation (light absorption, scattering, turbidity); define scope on TrashCan-Material (16 classes). |
-| **II. Literature Review** | **0.5** | Review existing methods/techniques relevant to the project. | Structured progression across 4 sensing & modeling paradigms: Acoustic Sonar (Valdenegro-Toro), Terrestrial LiDAR (Ge et al.), Foundation Camera Benchmark (Hong et al.), and Modern YOLO Detectors (Khriss et al., Jing et al.). Emphasize our unique video-disjoint split. |
+| **II. Literature Review** | **0.5** | Review existing methods/techniques relevant to the project. | Comprehensive progression across 8 literature baselines: Acoustic Sonar (Valdenegro-Toro [3]), Terrestrial LiDAR (Ge et al. [11]), Early Robotic Edge Benchmark (Fulton et al. [13]), Foundational Camera Benchmark (Hong et al. [1]), and Modern Detectors (Khriss et al. [2], Jiang et al. [14], Đuraš et al. [15], Jing et al. [12]). Highlights our unique video-disjoint split and negative findings on naive visual filters. |
 | **III. Models and Methods** | **0.5** | Justify and explain selection of models/methods; delineate own work vs pre-trained baselines. | Compare two-stage Faster R-CNN (MobileNetV3 for edge AUV, ResNet-50 v1 reference, ResNet-50 v2 improved) vs dense single-stage RetinaNet (focal loss). Detail RFS oversampling, red-channel compensation, and WiSE-FT weight interpolation. |
 | **IV. Experimental Setup & EDA** | **0.5** | Clear details about model parameters, evaluation metrics, and data splits (train/val/test). | Detail video-disjoint split (4,989 train / 649 val / 1,574 test across 312 distinct videos); quantify 297:1 class imbalance (rov 2,679 vs rubber 9); specify SGD momentum 0.9, cosine schedule, warmup, and COCO AP/AP50/APS/APL metrics. |
 | **V. Results & Discussion** | **0.5** | Discuss main findings, evaluate against metrics, compare to baselines/SOTA, error analysis. | Analyze Table I: Improved Faster R-CNN raises Test AP50 to 21.4% (+2.5) at 49 FPS; outperforms RetinaNet (11.6% AP50) by +9.8 points; detail per-class tail gains (shells +18.5%, eel +4.5%, fishing gear +1.8%); report 48.5% within-family FP confusion and 85.6% small-object miss rate. |
