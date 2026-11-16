@@ -3,19 +3,19 @@
 > **Project Title:** Clearer Waters: An Analysis of Marine Debris Detection Models  
 > **Authors:** Sudam Attanayake (z5363513), Shabs Nair (z5538897), Atul Kothuri (z5699628), Shetal Balaji (z5419311)  
 > **Course:** COMP9444 Neural Networks and Deep Learning (Term 3, 2024)  
-> **Target Document:** [`Project/Asterisk.docx`](file:///media/sudam/New%20Volume/COMP9444/Project/Asterisk.docx)  
-> **Presentation Deck:** [`Project/COMP9444_Project014_Presentation.pptx`](file:///media/sudam/New%20Volume/COMP9444/Project/COMP9444_Project014_Presentation.pptx)  
-> **Baseline Data Source:** [`Project/baseline_outputs/baseline_results.json`](file:///media/sudam/New%20Volume/COMP9444/Project/baseline_outputs/baseline_results.json)  
+> **Target Document:** [`Project/Asterisk.docx`](file:///media/sudam/New%20Volume/Google%20Drive/COMP9444/Project/Asterisk.docx)  
+> **Presentation Deck:** [`Project/COMP9444_Project014_Presentation.pptx`](file:///media/sudam/New%20Volume/Google%20Drive/COMP9444/Project/COMP9444_Project014_Presentation.pptx)  
+> **Baseline Data Source:** [`Project/baseline_outputs/baseline_results.json`](file:///media/sudam/New%20Volume/Google%20Drive/COMP9444/Project/baseline_outputs/baseline_results.json)  
 
 ---
 
 ## 1. Executive Summary & Deliverables Status
 
-This blueprint coordinates the finalization of the COMP9444 Summary Report and Presentation according to official university marking rubrics and the global token-conservation architecture in [`AGENTS.md`](file:///media/sudam/New%20Volume/COMP9444/AGENTS.md).
+This blueprint coordinates the finalization of the COMP9444 Summary Report and Presentation according to official university marking rubrics and the global token-conservation architecture in [`AGENTS.md`](file:///media/sudam/New%20Volume/Google%20Drive/COMP9444/AGENTS.md).
 
 ### Completed Bookkeeping & Setup Tasks:
 1. **Presentation Slides Updated (`COMP9444_Project014_Presentation.pptx` & `COMP9444_Presentation_Asterik_and_Obelix.pptx`)**:
-   - Slide 4 retained as a dedicated focus on the **TrashCan Benchmark** ([Hong et al., 2020](file:///media/sudam/New%20Volume/COMP9444/Project/papers/Hong2020_TrashCan.pdf)) with its full baseline table.
+   - Slide 4 retained as a dedicated focus on the **TrashCan Benchmark** ([Hong et al., 2020](file:///media/sudam/New%20Volume/Google%20Drive/COMP9444/Project/papers/Hong2020_TrashCan.pdf)) with its full baseline table.
    - Slide 5 completely overhauled into a high-visibility, unified **Literature Review Comparison Table** (Categories: *Title / Study*, *Method*, *Dataset*, *Results*, *Limitations*) integrating:
      - **Valdenegro-Toro (2016)** (Acoustic FLS Sonar + CNN)
      - **Ge et al. (2016)** (Terrestrial Full-Waveform LiDAR + SVM)
@@ -29,7 +29,7 @@ This blueprint coordinates the finalization of the COMP9444 Summary Report and P
    - Retained **100% of the existing draft prose** without deleting or altering any team writing.
    - Inserted distinct, styled callout boxes under every section heading detailing rubric expectations and verified empirical figures.
    - Synthesized all 8 literature works across 5 structured paragraphs in Section II (Related Work).
-   - Resolved Section VIII (References) with full IEEE bibliographic citations `[1]` through `[15]`, including [Fulton et al. (2019)](file:///media/sudam/New%20Volume/COMP9444/Project/LITERATURE_REVIEW.md#4-foundational-robotic-detection-on-jamstec-fulton-et-al-2019) `[13]`, [Jiang et al. (2024)](file:///media/sudam/New%20Volume/COMP9444/Project/LITERATURE_REVIEW.md#7-hybrid-attention--dynamic-loss-jiang-et-al-2024) `[14]`, and [Đuraš et al. (2024)](file:///media/sudam/New%20Volume/COMP9444/Project/LITERATURE_REVIEW.md#8-shallow-coastal-debris-benchmark-dura-et-al-2024) `[15]`.
+   - Resolved Section VIII (References) with full IEEE bibliographic citations `[1]` through `[15]`, including [Fulton et al. (2019)](file:///media/sudam/New%20Volume/Google%20Drive/COMP9444/Project/LITERATURE_REVIEW.md#4-foundational-robotic-detection-on-jamstec-fulton-et-al-2019) `[13]`, [Jiang et al. (2024)](file:///media/sudam/New%20Volume/Google%20Drive/COMP9444/Project/LITERATURE_REVIEW.md#7-hybrid-attention--dynamic-loss-jiang-et-al-2024) `[14]`, and [Đuraš et al. (2024)](file:///media/sudam/New%20Volume/Google%20Drive/COMP9444/Project/LITERATURE_REVIEW.md#8-shallow-coastal-debris-benchmark-dura-et-al-2024) `[15]`.
 3. **Training & Experimental Audit**:
    - Audited all baseline checkpoints, evaluation JSONs, and test predictions. All primary experimental data is 100% complete and verified.
 
@@ -37,7 +37,7 @@ This blueprint coordinates the finalization of the COMP9444 Summary Report and P
 
 ## 2. Official Marking Rubric Alignment (Summary Report - 5 Marks Total)
 
-The Summary Report has a strict length limit of **max 4 pages (excluding references)**. To achieve the full 5/5 marks, each section must satisfy the criteria in [`Project/COMP9444_Group_Project_Marking_Criteria.pdf`](file:///media/sudam/New%20Volume/COMP9444/Project/COMP9444_Group_Project_Marking_Criteria.pdf):
+The Summary Report has a strict length limit of **max 4 pages (excluding references)**. To achieve the full 5/5 marks, each section must satisfy the criteria in [`Project/COMP9444_Group_Project_Marking_Criteria.pdf`](file:///media/sudam/New%20Volume/Google%20Drive/COMP9444/Project/COMP9444_Group_Project_Marking_Criteria.pdf):
 
 | Section | Marks | Official Rubric Requirement | Alignment Strategy in `Asterisk.docx` |
 | :--- | :---: | :--- | :--- |
@@ -54,7 +54,7 @@ The Summary Report has a strict length limit of **max 4 pages (excluding referen
 
 ## 3. Verified Experimental Data Matrix (All Verified Figures for Argon)
 
-Argon does not need to guess, calculate, or search log files. Every number below is verified directly from [`baseline_results.json`](file:///media/sudam/New%20Volume/COMP9444/Project/baseline_outputs/baseline_results.json):
+Argon does not need to guess, calculate, or search log files. Every number below is verified directly from [`baseline_results.json`](file:///media/sudam/New%20Volume/Google%20Drive/COMP9444/Project/baseline_outputs/baseline_results.json):
 
 ### A. Primary Model Performance on Test Split (Held-Out Videos)
 *Evaluated under strict video-disjoint protocol on TrashCan-Material 1.0 (1,574 test frames).*
@@ -127,7 +127,7 @@ Argon does not need to guess, calculate, or search log files. Every number below
 **NO.** For the completion of the COMP9444 Group Project (Summary Report + Presentation + Final Notebook), **no additional model training is required**:
 1. All four experimental models (`fasterrcnn_mobilenet_v3_fpn_best.pth`, `fasterrcnn_resnet50_fpn_best.pth`, `retinanet_r50_v2_best.pth`, and `resnet50_v2_improved_best.pth`) are fully trained and evaluated.
 2. Full validation and test evaluation logs, bounding-box prediction arrays (`test_predictions_r50.npz`, `test_predictions_r50_v2.npz`), and confusion error breakdowns are saved and verified.
-3. If the team subsequently decides as an optional extension to train a YOLOv11 detector, agents MUST obey [`AGENTS.md`](file:///media/sudam/New%20Volume/COMP9444/AGENTS.md) Section 5:
+3. If the team subsequently decides as an optional extension to train a YOLOv11 detector, agents MUST obey [`AGENTS.md`](file:///media/sudam/New%20Volume/Google%20Drive/COMP9444/AGENTS.md) Section 5:
    > **STRICT BAN ON LOCAL LAPTOP GPU TRAINING:** Never run YOLO or PyTorch loops locally on the laptop RTX 3050 Ti (documented crash and kernel panic history). Any future training MUST be dispatched over Tailscale to `Sudath-Work-PC` (`100.108.105.13`, RTX 3060 12GB).
 
 ---
@@ -153,7 +153,7 @@ All placeholders in `Asterisk.docx` and draft presentations are resolved with th
 
 ## 6. Handoff Protocol for Argon (Heavy Cognitive Lifting)
 
-As per [`AGENTS.md`](file:///media/sudam/New%20Volume/COMP9444/AGENTS.md):
+As per [`AGENTS.md`](file:///media/sudam/New%20Volume/Google%20Drive/COMP9444/AGENTS.md):
 - **Flash Orchestrator Role (Complete):** Workspace setup, diagnostic extraction, slide table XML insertion, docx annotation, and verified data synthesis are fully completed.
 - **Argon Role (Upcoming):** Argon can now take this document and `Asterisk.docx` to polish the prose, synthesize the analytical discussion, ensure tight conciseness to meet the strict 4-page limit, and refine academic phrasing.
 - **Downshift Reminder Mandate:** Whenever Argon completes high-level writing and structural synthesis, the user must be reminded to switch back to Gemini 3.8 Flash (High) for iterative checks.
