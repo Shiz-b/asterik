@@ -53,7 +53,7 @@ def supercat(name):
         return "plant"
     return "other"
 
-# 1. Load metadata CSVs and image stats
+# Load metadata CSVs and image stats
 STATS_CSV = PROJECT_DIR / "data/trashcan/image_stats_mirror_material.csv"
 size_map = {}
 img_quality_map = {}
@@ -141,7 +141,7 @@ class TrashCanDataset(Dataset):
             rgb = im.convert("RGB")
             w, h = rgb.size
             if self.train and self.underwater_aug:
-                # Week 8 Improvement: Underwater colour-cast correction (red-channel boost / white balance jitter) + contrast enhancement
+                # Contrast and brightness augmentation
                 if torch.rand(1).item() < 0.6:
                     cf = float(torch.empty(1).uniform_(0.85, 1.35).item())
                     rgb = ImageEnhance.Contrast(rgb).enhance(cf)
@@ -151,9 +151,9 @@ class TrashCanDataset(Dataset):
             arr = np.asarray(rgb, dtype=np.float32) / 255.0
 
         if self.train and self.underwater_aug and torch.rand(1).item() < 0.5:
-            # Red channel compensation / underwater colour cast jitter
+            # Underwater RGB colour cast augmentation
             gains = np.array([
-                float(torch.empty(1).uniform_(0.95, 1.22).item()),  # boost weak red channel
+                float(torch.empty(1).uniform_(0.95, 1.22).item()),
                 float(torch.empty(1).uniform_(0.90, 1.08).item()),
                 float(torch.empty(1).uniform_(0.90, 1.08).item()),
             ], dtype=np.float32)
@@ -202,10 +202,7 @@ def collate_fn(batch):
     return tuple(zip(*batch))
 
 def build_repeat_factor_sampler(records, threshold_t=0.04):
-    """
-    Week 8 Improvement: Repeat-Factor Sampling (RFS, Gupta et al. / Detectron2)
-    Up-weights images containing rare tail classes (< threshold_t fraction of images).
-    """
+    # Repeat-Factor Sampling (RFS) weights for rare classes
     n_imgs = len(records)
     cat_img_counts = defaultdict(int)
     for rec in records:
@@ -221,7 +218,7 @@ def build_repeat_factor_sampler(records, threshold_t=0.04):
         img_weights.append(w)
     return WeightedRandomSampler(img_weights, num_samples=len(records), replacement=True)
 
-# Exact MS COCO 101-point Interpolated AP Evaluator
+# MS COCO 101-point AP evaluator
 IOU_THRESHOLDS = np.linspace(0.50, 0.95, 10)
 REC_THRESHOLDS = np.linspace(0.00, 1.00, 101)
 AREA_RANGES = {
@@ -484,9 +481,7 @@ def build_detector(arch_name, num_classes):
             image_mean=[0.485, 0.456, 0.406], image_std=[0.229, 0.224, 0.225],
         )
     elif arch_name == "resnet50_v2_improved":
-        # Week 8 Improved Two-Stage Detector:
-        # 1) Faster R-CNN ResNet-50-FPN v2 (stronger FPN + 4-conv box head)
-        # 2) Trained with Repeat-Factor Sampling + Underwater Colour/Contrast Augmentation + SGD momentum
+        # Improved Faster R-CNN ResNet-50-FPN v2 detector
         model = fasterrcnn_resnet50_fpn_v2(
             weights=FasterRCNN_ResNet50_FPN_V2_Weights.DEFAULT,
             trainable_backbone_layers=2,
@@ -502,7 +497,7 @@ def build_detector(arch_name, num_classes):
         raise ValueError(arch_name)
     return model
 
-# DataLoaders (batch_size=4 to guarantee zero CUDA allocator OOM retries on 4GB RTX 3050 Ti)
+# Build DataLoaders
 train_ds_base = TrashCanDataset(split_records["train"], cat2id, train=True, underwater_aug=False)
 train_ds_imp = TrashCanDataset(split_records["train"], cat2id, train=True, underwater_aug=True)
 val_ds = TrashCanDataset(split_records["val"], cat2id, train=False)
@@ -515,7 +510,7 @@ train_loader_imp = DataLoader(train_ds_imp, batch_size=4, sampler=rfs_sampler, n
 val_loader = DataLoader(val_ds, batch_size=8, shuffle=False, num_workers=2, collate_fn=collate_fn, pin_memory=True)
 test_loader = DataLoader(test_ds, batch_size=8, shuffle=False, num_workers=2, collate_fn=collate_fn, pin_memory=True)
 
-# Step A: Evaluate already-trained Week 7 MobileNetV3-Large-FPN checkpoint
+# Evaluate MobileNetV3-Large-FPN baseline
 print("\n==========================================")
 print("1. Loading & Evaluating Week 7 Baseline 1: Faster R-CNN (MobileNetV3-Large-FPN)")
 print("==========================================")
@@ -546,7 +541,7 @@ del m_mb
 gc.collect()
 torch.cuda.empty_cache()
 
-# Step B: Finish Epochs 4-5 of Week 7 ResNet-50-FPN Baseline (resuming from Epoch 3 checkpoint!)
+# Resume and finish ResNet-50-FPN baseline
 print("\n==========================================")
 print("2. Finishing Epochs 4–5 of Week 7 Baseline 2: Faster R-CNN (ResNet-50-FPN)")
 print("==========================================")
@@ -722,7 +717,7 @@ def train_w8_model(arch_name, display_name, loader, epochs=5, max_lr=0.008):
     torch.cuda.empty_cache()
     return res_dict, val_preds, test_preds
 
-# Step C: Train Week 8 Alternative Architecture (RetinaNet-ResNet50-FPN v2 with Focal Loss)
+# Train RetinaNet ResNet-50-FPN v2
 res_retina, val_preds_retina, test_preds_retina = train_w8_model(
     "retinanet_r50_v2",
     "RetinaNet (ResNet-50-FPN v2, Focal Loss) [W8 Alternative]",
@@ -731,7 +726,7 @@ res_retina, val_preds_retina, test_preds_retina = train_w8_model(
     max_lr=0.006,
 )
 
-# Step D: Train Week 8 Improved Two-Stage Model (Faster R-CNN ResNet-50-FPN v2 + RFS + Underwater Aug)
+# Train improved Faster R-CNN ResNet-50-FPN v2
 res_r50_v2, val_preds_r50_v2, test_preds_r50_v2 = train_w8_model(
     "resnet50_v2_improved",
     "Faster R-CNN (ResNet-50-FPN v2 + RFS + Underwater Aug) [W8 Improved]",
@@ -740,7 +735,7 @@ res_r50_v2, val_preds_r50_v2, test_preds_r50_v2 = train_w8_model(
     max_lr=0.008,
 )
 
-# Step E: Error Analysis on Test Split (comparing W7 Baseline ResNet-50-FPN vs W8 Improved ResNet-50-FPN v2)
+# Analyze test-split false positives and false negatives
 def analyze_errors(preds, gt_records, cat2id, id2cat, score_thr=0.5):
     fp_counts = {
         "Within-family class confusion\n(e.g. trash_etc vs trash_plastic)": 0,

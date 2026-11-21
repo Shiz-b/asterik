@@ -210,14 +210,14 @@ def build_repeat_factor_sampler(records, threshold_t=0.05):
     img_weights = [max((cat_repeat[c] for c in set(lbl for lbl, *_ in rec["objects"])), default=1.0) for rec in records]
     return WeightedRandomSampler(img_weights, num_samples=len(records), replacement=True)
 
-# Compute class weights for Week 8 Class-Balanced RoI Cross-Entropy Loss
+# Class weights for RoI cross-entropy loss
 train_class_counts = defaultdict(int)
 for rec in split_records["train"]:
     for lbl, *_ in rec["objects"]:
         train_class_counts[lbl] += 1
 
 cls_weights = torch.ones((NUM_CLASSES,), dtype=torch.float32, device=DEVICE)
-cls_weights[0] = 0.65  # slightly down-weight dominant background RoIs
+cls_weights[0] = 0.65  # down-weight background RoIs
 raw_w = []
 for cid in range(1, NUM_CLASSES):
     cnt = max(1, train_class_counts[id2cat[cid]])
@@ -515,7 +515,7 @@ train_loader_imp = DataLoader(train_ds_imp, batch_size=4, sampler=rfs_sampler, n
 val_loader = DataLoader(val_ds, batch_size=8, shuffle=False, num_workers=2, collate_fn=collate_fn, pin_memory=True)
 test_loader = DataLoader(test_ds, batch_size=8, shuffle=False, num_workers=2, collate_fn=collate_fn, pin_memory=True)
 
-# 1. Evaluate saved W7 MobileNetV3-FPN
+# Evaluate MobileNetV3-FPN baseline
 print("1. Evaluating saved W7 Baseline 1: MobileNetV3-Large-FPN...")
 m_mb = build_detector("mobilenet_v3", NUM_CLASSES).to(DEVICE)
 m_mb.load_state_dict(torch.load(OUT_DIR / "fasterrcnn_mobilenet_v3_fpn_best.pth", map_location=DEVICE))
@@ -540,7 +540,7 @@ res_mbv3 = {
 }
 del m_mb; gc.collect(); torch.cuda.empty_cache()
 
-# 2. Evaluate saved W7 ResNet-50-FPN v1
+# Evaluate ResNet-50-FPN baseline
 print("2. Evaluating saved W7 Baseline 2: ResNet-50-FPN...")
 m_r50 = build_detector("resnet50", NUM_CLASSES).to(DEVICE)
 m_r50.load_state_dict(torch.load(OUT_DIR / "fasterrcnn_resnet50_fpn_best.pth", map_location=DEVICE))
@@ -565,7 +565,7 @@ res_r50 = {
 }
 del m_r50; gc.collect(); torch.cuda.empty_cache()
 
-# 3. Evaluate saved W8 Alternative RetinaNet-ResNet50-FPN v2
+# Evaluate RetinaNet ResNet-50-FPN v2
 print("3. Evaluating saved W8 Alternative: RetinaNet (ResNet-50-FPN v2, Focal Loss)...")
 m_ret = build_detector("retinanet_r50_v2", NUM_CLASSES).to(DEVICE)
 m_ret.load_state_dict(torch.load(OUT_DIR / "retinanet_r50_v2_best.pth", map_location=DEVICE))
@@ -588,7 +588,7 @@ res_retina = {
 }
 del m_ret; gc.collect(); torch.cuda.empty_cache()
 
-# 4. Week 8 Improved Model: Fine-tune from W7 ResNet-50-FPN with Class-Balanced Loss + Repeat-Factor Sampling + Underwater Aug + 360x600 scale
+# Fine-tune improved Faster R-CNN model
 print("4. Training Week 8 Improved Faster R-CNN (Class-Weighted Loss + RFS + Underwater Aug + High-Res 360x600)...")
 orig_fastrcnn_loss = roi_heads_mod.fastrcnn_loss
 
@@ -619,7 +619,7 @@ sched_imp = torch.optim.lr_scheduler.CosineAnnealingLR(opt_imp, T_max=2, eta_min
 scaler = torch.amp.GradScaler("cuda", enabled=(DEVICE.type == "cuda"))
 
 imp_ckpt = OUT_DIR / "resnet50_v2_improved_best.pth"
-# Evaluate epoch 0 (warm-started with higher 360x600 resolution & tuned NMS)
+# Evaluate warm-started epoch 0
 val0, _ = evaluate_model(m_imp, val_loader, split_records["val"], cat2id, id2cat)
 print(f" -> Warm-start + High-Res (360x600) Val AP={val0['AP']:.2f}, AP50={val0['AP50']:.2f}")
 best_imp_ap = val0["AP"]

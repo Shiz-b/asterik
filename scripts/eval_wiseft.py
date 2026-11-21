@@ -30,7 +30,7 @@ NUM_CLASSES = ns["NUM_CLASSES"]
 sd_w7 = torch.load(OUT_DIR / "fasterrcnn_resnet50_fpn_best.pth", map_location="cpu")
 sd_w8 = torch.load(OUT_DIR / "resnet50_v2_improved_best.pth", map_location="cpu")
 
-# WiSE-FT weight-space ensembling (alpha = 0.50 between W7 baseline and W8 RFS + Class-Weighted + Underwater Aug)
+# WiSE-FT weight-space ensembling (alpha = 0.50)
 sd_wise = {}
 for k in sd_w7:
     if sd_w7[k].is_floating_point():

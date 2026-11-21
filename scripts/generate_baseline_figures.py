@@ -127,7 +127,7 @@ def make_results_figures():
     err_w8 = data["error_analysis_w8_improved_test"]
     train_counts = data["train_class_counts"]
 
-    # --- Figure 10: Training Loss & Validation AP Progression (Week 7 vs Week 8) ---
+    # Figure 10: Training loss and validation AP progression
     fig, axes = plt.subplots(1, 2, figsize=(14.5, 5.0))
     ax = axes[0]
     for m, col, ls, mk, lbl in [
@@ -169,7 +169,7 @@ def make_results_figures():
     plt.tight_layout()
     savefig("10_baseline_training_curves")
 
-    # --- Figure 11: COCO Metrics Comparison & Family Breakdown ---
+    # Figure 11: COCO metrics comparison and family breakdown
     fig, axes = plt.subplots(1, 2, figsize=(15.0, 5.2), gridspec_kw={"width_ratios": [1.45, 1.0]})
     ax = axes[0]
     metrics_keys = ["AP", "AP50", "AP75", "APS", "APM", "APL"]
@@ -228,7 +228,7 @@ def make_results_figures():
     plt.tight_layout()
     savefig("11_baseline_ap_comparison")
 
-    # --- Figure 12: Per-Class AP50 (W7 Baseline vs W8 Improved) & Imbalance Correlation ---
+    # Figure 12: Per-class AP50 and imbalance correlation
     fig, axes = plt.subplots(1, 2, figsize=(15.0, 5.8), gridspec_kw={"width_ratios": [1.3, 1.0]})
     ax = axes[0]
     pc_w7 = r50["test"]["per_class"]
@@ -286,7 +286,7 @@ def make_results_figures():
     plt.tight_layout()
     savefig("12_baseline_per_class_ap")
 
-    # --- Figure 13: Qualitative Predictions Grid on Test Split (using Best W8 Improved Model) ---
+    # Figure 13: Qualitative test predictions grid
     preds_npz = np.load(OUT_DIR / "test_predictions_r50_v2.npz", allow_pickle=True)
     test_csv = DATA_DIR / "test" / "metadata.csv"
     by_file = defaultdict(list)
@@ -365,7 +365,7 @@ def make_results_figures():
     plt.tight_layout()
     savefig("13_baseline_predictions_grid")
 
-    # --- Figure 14: Error Analysis & Failure Mode Reduction (Week 7 vs Week 8) ---
+    # Figure 14: Error analysis and failure mode breakdown
     fig, axes = plt.subplots(1, 2, figsize=(14.8, 5.0), gridspec_kw={"width_ratios": [1.1, 1.05]})
     ax = axes[0]
     fp_pct_w7 = err_w7["fp_pct"]

@@ -59,7 +59,7 @@ def supercat(name):
         return "plant"
     return "other"
 
-# 1. Load metadata CSVs and image stats
+# Load metadata CSVs and image stats
 STATS_CSV = PROJECT_DIR / "data/trashcan/image_stats_mirror_material.csv"
 size_map = {}
 img_quality_map = {}
@@ -120,7 +120,7 @@ print("Loading metadata splits...")
 split_records, classes, cat2id, id2cat = load_splits()
 NUM_CLASSES = len(classes) + 1  # 16 foreground + 1 background = 17
 
-# 2. Preload JPEG bytes into RAM so GPU training is never bottlenecked by NTFS disk reads
+# Preload JPEG bytes into memory
 print("Caching JPEG bytes into memory for fast GPU training...")
 t_cache = time.time()
 all_records = split_records["train"] + split_records["val"] + split_records["test"]
@@ -199,7 +199,7 @@ class TrashCanDataset(Dataset):
 def collate_fn(batch):
     return tuple(zip(*batch))
 
-# 3. Exact MS COCO 101-point Interpolated AP Evaluator
+# MS COCO 101-point AP evaluator
 IOU_THRESHOLDS = np.linspace(0.50, 0.95, 10)
 REC_THRESHOLDS = np.linspace(0.00, 1.00, 101)
 AREA_RANGES = {
@@ -210,13 +210,9 @@ AREA_RANGES = {
 }
 
 def compute_coco_metrics(predictions, gt_records, cat2id, id2cat):
-    """
-    predictions: dict[image_id] -> {'boxes': np.ndarray (N,4), 'scores': np.ndarray (N,), 'labels': np.ndarray (N,)}
-    gt_records: list of record dicts
-    Returns full COCO metrics dict (AP, AP50, AP75, APS, APM, APL, per_class, family_ap, pr_curves, etc.)
-    """
+    # Compute COCO AP metrics from predictions and ground truth
     num_cats = len(cat2id)
-    # Organize GT and Detections per (cat_id, image_id)
+    # Organize GT and detections per (cat_id, image_id)
     gt_by_cat_img = defaultdict(list)
     det_by_cat_img = defaultdict(list)
 
@@ -590,18 +586,8 @@ res_r50, val_preds_r50, test_preds_r50 = train_baseline(
     "resnet50", "Faster R-CNN (ResNet-50-FPN)", epochs=5, max_lr=1.5e-4
 )
 
-# 5. Error Mode Diagnosis on Test Split (for ResNet-50-FPN)
+# Diagnose test-split false positives and false negatives
 def analyze_errors(preds, gt_records, cat2id, id2cat, score_thr=0.5):
-    """
-    Categorize false positives (FP) and false negatives (FN / missed GT) on the test split.
-    FP categories:
-      - class_confusion_same_family (IoU >= 0.5 with a GT of the same family, e.g. trash_plastic vs trash_etc)
-      - class_confusion_cross_family (IoU >= 0.5 with a GT of a different family)
-      - localization_error (0.1 <= IoU < 0.5 with same class GT)
-      - duplicate_detection (IoU >= 0.5 with an already-matched same-class GT)
-      - background_fp (IoU < 0.1 with any GT)
-    FN (missed GT) breakdown by size bucket and image quality (murky / colour cast).
-    """
     fp_counts = {
         "Within-family class confusion\n(e.g. trash_etc vs trash_plastic)": 0,
         "Cross-family class confusion\n(e.g. trash vs animal/plant)": 0,
